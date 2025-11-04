@@ -1,26 +1,56 @@
 <html>
 <script>
-  function displayUser() {
+function displayUser() {
+  try {
     let user = {
       name: "Dan",
       address: "Canada"
     };
-    user = null;
+    user = null; //simulated an error
     console.log(user.name);
-    console.log("✅ Program continues...");
+
+  } catch (err) {
+    console.log("Oops, an error occured", err.name);
   }
+    console.log("✅ Program continues...");
+    console.log("✅ Program continues...");
+    console.log("✅ Program continues...");
+    console.log("✅ Program continues...");
+}
 
+//Divide by zero
 
-  function divide(a, b) {
+function divide(a, b) {
+    try{  
+      //if the denominator is zero - throw an error
+      if(b==0){
+        throw new Error("Cannot divide by zero")
+      }
     let reminder = a / b;
     console.log("Result:", a / b);
+    } catch(err) {
+      console.log("Oops, an error ocurred", err.message)
   }
+}
 
-  function registerUser(username) {
+function registerUser(username) {
+  //if the user name is "" - throw an error
+  //step 1. write try-catch
+  //step 2. check if username == "" and throw an error
+  //step 2. username=="", username.trim()=="" remove unwanted spaces
+  try {
+    if(username.trim() === ""){
+      throw new Error("Username cannot be empty")
+    } else {
     console.log(`✅ User '${username}' registered successfully!`);
+    }
+  } catch(error) {
+    console.log("Registration error:", error.message)
   }
+}
 
   registerUser("Alex");
+  displayUser();
 </script>
 
 <body>
@@ -28,3 +58,6 @@
 </body>
 
 </html>
+
+<!--is better to do try and cath 
+

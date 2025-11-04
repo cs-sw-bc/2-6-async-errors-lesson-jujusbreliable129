@@ -1,20 +1,58 @@
 <html>
-    <script>
-        /*1. Create a simple promise*/
+<script>
+    /*1. Create a simple promise*/
+    const myPromise = new Promise((resolve, reject) => {
 
-        /*2. Use the promise*/
+        console.log("Preparing your food");
 
-        /*3. Add a promise with both resolve and reject*/
+        setTimeout(() => {
+            let ingredientsAvailable = false;
+            if (ingredientsAvailable == true) {
+                resolve("Your food is served - hot and fresh")
+            } else {
+                reject("We are very sorry, come back tomorrow");
+            }
+        }, 3000)
+        //asynchronous - succesful scenario
+    }); //Fat-arrow function , 2 parameters - resolve and reject
+    /*2. Use the promise*/
+    //then = succesful
+    //catch = failure/reject
 
-        /*4. Use then and catch both*/
+    /*myPromise
+        .then((x) => console.log("Food ready:", x))
+        .catch((err) => console.log("Error:", err));*/
 
-        /*5. Add a delay - because in real world, a webserver can take a few seconds to return resposnes*/
 
-        /*6. Use the promise using then/catch. Later try the same with async/await*/
 
-        
-    </script>
-    <body>
-        <h1>Promises/ Async - await</h1>
-    </body>
+
+
+    async function orderFood() {
+        try {
+            //wait for my promise to be resolved;
+            let messageFromKitchen = await myPromise;
+            console.log("Food ready from asynch:", messageFromKitchen);
+            //variable time to complete - asynchronous function
+        }
+        catch (error) {
+            console.log("Error from async:", error)
+
+        }
+    }
+        orderFood();
+    /*3. Add a promise with both resolve and reject*/
+
+    /*4. Use then and catch both*/
+
+    /*5. Add a delay - because in real world, a webserver can take a few seconds to return resposnes*/
+
+    /*6. Use the promise using then/catch. Later try the same with async/await*/
+
+
+</script>
+
+<body>
+    <h1>Promises/ Async - await</h1>
+</body>
+
 </html>
